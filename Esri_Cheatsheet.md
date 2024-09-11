@@ -3,12 +3,11 @@ The below are some common examples of openCypher Syntax based upon the [iNatural
 
 ## Read Query Structure
 These are the baseline for pattern search operations. OpenCypher keywords are not case-sensitive. Cypher IS case-sensitive for variables.
-[USE]
 [MATCH [WHERE]]
 [WITH [ORDER BY] [SKIP] [LIMIT] [WHERE]]
 RETURN [ORDER BY] [SKIP] [LIMIT]
 
-Note: Optional Match is not supported by OpenCypher
+Note: The [USE] function in Cypher is not relevant in the ArcGIS implementation as all applications of clients require specification and authentication to the Knowledge Graph Service provided by the ArcGIS Knowledge Server, which brokers access to the underlying graph database. And there is a 1:1 relationship between the service and the database. Optional Match is not supported by OpenCypher
 
 ## Example Queries - Reference Data Model
 ![image](https://github.com/user-attachments/assets/3953062e-2310-4379-a19a-bac9a23a81e2)
