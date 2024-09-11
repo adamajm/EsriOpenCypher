@@ -2,6 +2,7 @@
 The below are some common examples of openCypher Syntax based upon the [iNaturalist Bee Observation dataset](https://developers.arcgis.com/javascript/latest/sample-code/sandbox/?sample=knowledgegraph-query) used in our JS Sample Code Sandbox environment.
 
 ## Data Model
+![image](https://github.com/user-attachments/assets/3953062e-2310-4379-a19a-bac9a23a81e2)
 
 ## <a name='TableofContents'></a>Table of Contents
 <!-- vscode-markdown-toc -->
