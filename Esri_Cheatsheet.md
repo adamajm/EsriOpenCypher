@@ -1,7 +1,16 @@
 # openCypher Syntax Cheatsheet
 The below are some common examples of openCypher Syntax based upon the [iNaturalist Bee Observation dataset](https://developers.arcgis.com/javascript/latest/sample-code/sandbox/?sample=knowledgegraph-query) used in our JS Sample Code Sandbox environment.
 
-## Data Model
+## Read Query Structure
+These are the baseline for pattern search operations. OpenCypher keywords are not case-sensitive. Cypher IS case-sensitive for variables.
+[USE]
+[MATCH [WHERE]]
+[WITH [ORDER BY] [SKIP] [LIMIT] [WHERE]]
+RETURN [ORDER BY] [SKIP] [LIMIT]
+
+Note: Optional Match is not supported by OpenCypher
+
+## Example Queries - Reference Data Model
 ![image](https://github.com/user-attachments/assets/3953062e-2310-4379-a19a-bac9a23a81e2)
 
 ## <a name='TableofContents'></a>Table of Contents
@@ -150,86 +159,6 @@ RETURN d.city
 UNION ALL
 MATCH (a:airport {code:'ANC'})-->(d) 
 RETURN d.city
-```
-
-## <a name='WriteQueries'></a>Write Queries
-
-### <a name='CreatingData'></a>Creating Data
-
-#### <a name='Createanode'></a>Create a node
-```
-CREATE (a)
-```
-#### <a name='Createanodewithlabelandnoproperties'></a>Create a node with label and no properties
-```
-CREATE (a:airport)
-```
-#### <a name='Createanodewithlabelandproperties'></a>Create a node with label and properties
-```
-CREATE (a:airport {code: 'FOO'})
-```
-#### <a name='Createrelationship'></a>Create relationship
-```
-MATCH (a:airport {code:'SEA'}), (b:airport {code:'ANC'})
-CREATE (a)-[r:route]->(b)
-RETURN r
-```
-#### <a name='Createrelationshipwithproperties'></a>Create relationship with properties
-```
-MATCH (a:airport {code:'SEA'}), (b:airport {code:'ANC'})
-CREATE (a)-[r:route {dist: 1000}]->(b)
-RETURN r
-```
-#### <a name='Createapath'></a>Create a path
-```
-CREATE p = (a:airport {code:'Foo'})-[:route]->(a:airport {code:'Bar'})
-RETURN p
-```
-#### <a name='Createfromalist'></a>Create from a list
-```
-UNWIND [{code: 'foo'}, {code: 'bar'}] AS properties
-CREATE (a:airport) SET a = properties
-```
-
-### <a name='UpdatingData'></a>Updating Data
-
-#### <a name='Setaproperty'></a>Set a property
-```
-MATCH (a:airport {code: 'SEA'})
-SET a.foo='bar'
-```
-#### <a name='Removeaproperty'></a>Remove a property
-```
-MATCH (a:airport {code: 'SEA'})
-SET a.foo=null
-```
-```
-MATCH (a:airport {code: 'SEA'})
-REMOVE a.foo
-```
-#### <a name='Mergeanode'></a>Merge a node
-```
-MERGE (a:airport {code: 'SEA'})
-  ON CREATE SET n.created = timestamp()
-  ON MATCH SET
-    n.counter = coalesce(n.counter, 0) + 1,
-    n.accessTime = timestamp()
-```
-### <a name='DeletingData'></a>Deleting Data
-
-#### <a name='Deleteanode'></a>Delete a node
-```
-DELETE (a:airport {code: 'SEA'})
-```
-#### <a name='Deleteanodeandrelationships'></a>Delete a node and relationships
-```
-MATCH (a:airport {code: 'SEA'})
-DETACH DELETE a
-```
-#### <a name='Deleterelationships'></a>Delete relationships
-```
-MATCH (a:airport {code:'SEA'})-[r]->(d) 
-DELETE r
 ```
 
 ## <a name='Operators'></a>Operators
