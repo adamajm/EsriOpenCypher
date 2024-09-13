@@ -24,7 +24,7 @@ WHERE e.NUMBERPROPERTY > 10
 WITH oe ORDER BY oe.PRICE DESC
 ```
 
-Extras: [UNION] [UNION ALL] [UNWIND]
+Additional Key Subclauses: [UNION] [UNION ALL] [UNWIND]
 
 Note: The [USE] function in Cypher is not relevant in the ArcGIS implementation as all applications of clients require specification and authentication to the Knowledge Graph Service provided by the ArcGIS Knowledge Server, which brokers access to the underlying graph database. And there is a 1:1 relationship between the service and the database. Optional Match is not supported by OpenCypher
 
