@@ -78,6 +78,38 @@ unwind
 	/vscode-markdown-toc-config -->
 <!-- /vscode-markdown-toc -->
 
+## <a name='Operators'></a>Operators
+
+Type | Operators
+------------ | -------------
+General | DISTINCT, x.y (property access)
+Math | +, -, *, /, %, ^
+Comparison | =, >, <, <>, <=, >=, IS NULL, IS NOT NULL
+Boolean | AND, OR, NOT, XOR
+String | STARTS WITH, ENDS WITH, CONTAINS, +
+LIST | +, IN, []
+Sorting | ORDER BY xxx ASC/DESC
+
+## <a name='Functions'></a>Functions
+
+Type | Functions
+------------ | -------------
+Predicate | exists()
+Scalar | **coalesce()**, endNode(), head(), id(0), last(), length(), properties(), size(), startNode(), timestamp(), toBoolean(), toFloat(), toInteger(), type()
+Aggregating | avg(), **collect()**, **count()**, max(), min(), percentileCont(), percentileDisc(), stDev(), stDevP(), sum()
+List | keys(), labels(), nodes(), range(), relationships(), reverse(), tail()
+Dates | **localdatetime()**, date(), localtime(), **datetime()**, duration.between(a,b), duration.inMonths(a,b), duration.inDays(a,b), duration.inSeconds(a,b)
+Math - numeric | abs(), ceil(), floor(), rand(), round(), sign()
+Math - logarithmic | e(), exp(), log(), log10(), sqrt()
+Math - trigonometric | acos(), asin(), atan(), atan2(), cos(), cot(), degree(), pi(), radians(), sin(), tan()
+String | left(), lTrim(), replace(), reverse(), right(), rTrim(), split(), substring(), toLower(), toString(), toUpper(), trim()
+Spatial | esri.graph.ST_Equals(,), esri.graph.ST_Contains(,), esri.graph.ST_Intersects(,), esri.graph.ST_GeoDistance(,), esri.graph.ST_WKTToGeometry(string)
+
+### Working with DateTime Functions
+TBD
+
+### Working with Spatial Functions
+
 ## <a name='PatternMatching'></a>Pattern Matching
 Pattern matching is the most basic actions one can do in openCypher and is the basis for all read queries.
 
@@ -164,32 +196,3 @@ UNION ALL
 MATCH (a:airport {code:'ANC'})-->(d) 
 RETURN d.city
 ```
-
-## <a name='Operators'></a>Operators
-
-Type | Operators
------------- | -------------
-General | DISTINCT, x.y (property access)
-Math | +, -, *, /, %, ^
-Comparison | =, >, <, <>, <=, >=, IS NULL, IS NOT NULL
-Boolean | AND, OR, NOT, XOR
-String | STARTS WITH, ENDS WITH, CONTAINS, +
-LIST | +, IN, []
-Sorting | ORDER BY xxx ASC/DESC
-Spatial | esri.graph.ST_Equals(,), esri.graph.ST_Contains(,), esri.graph.ST_Intersects(,), esri.graph.ST_GeoDistance(,), esri.graph.ST_WKTToGeometry(string)
-
-## Working with DateTime
-
-## <a name='Functions'></a>Functions
-
-Type | Functions
------------- | -------------
-Predicate | exists()
-Scalar | **coalesce()**, endNode(), head(), id(0), last(), length(), properties(), size(), startNode(), timestamp(), toBoolean(), toFloat(), toInteger(), type()
-Aggregating | avg(), **collect()**, **count()**, max(), min(), percentileCont(), percentileDisc(), stDev(), stDevP(), sum()
-List | keys(), labels(), nodes(), range(), relationships(), reverse(), tail()
-Dates | **localdatetime()**, date(), localtime(), **datetime()**, duration.between(a,b), duration.inMonths(a,b), duration.inDays(a,b), duration.inSeconds(a,b)
-Math - numeric | abs(), ceil(), floor(), rand(), round(), sign()
-Math - logarithmic | e(), exp(), log(), log10(), sqrt()
-Math - trigonometric | acos(), asin(), atan(), atan2(), cos(), cot(), degree(), pi(), radians(), sin(), tan()
-String | left(), lTrim(), replace(), reverse(), right(), rTrim(), split(), substring(), toLower(), toString(), toUpper(), trim()
