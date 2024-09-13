@@ -29,8 +29,23 @@ Extras: [UNION] [UNWIND]
 Note: The [USE] function in Cypher is not relevant in the ArcGIS implementation as all applications of clients require specification and authentication to the Knowledge Graph Service provided by the ArcGIS Knowledge Server, which brokers access to the underlying graph database. And there is a 1:1 relationship between the service and the database. Optional Match is not supported by OpenCypher
 
 ### Common Patterns
-* Using Variables for Entity Types, Relationship Types, or collections of results
-* Using Alias
+#### Using Variables & Aliases 
+You can use varibles to represent  Entity Types, Relationship Types, or collections of results.
+Variables can be reused later in later clauses, operators or subqueries
+Alias can be defined by putting "AS" after operators.
+```
+WITH distinct(person) AS UniquePeople
+RETURN UniquePeople
+```
+#### Create Distinct Lists 
+Use Distinct(expression)
+```
+MATCH (n:Person)-[r:KNOWS]-(m:Person)
+RETURN DISTINCT n AS UniquePersonList
+```
+#### Collect & Unwind lists
+collect(expression) | The function collect() returns a single aggregated list containing the values returned by an expression. 
+unwind
 
 ## Example Queries - Reference Data Model
 ![image](https://github.com/user-attachments/assets/3953062e-2310-4379-a19a-bac9a23a81e2)
@@ -133,10 +148,6 @@ MATCH (a:airport) RETURN a.city AS dest
 ```
 MATCH (a:airport) RETURN DISTINCT a.region
 ```
-#### <a name='Orderresultsascending'></a>Order results ascending
-```
-MATCH (a:airport) RETURN a ORDER BY a.elev
-```
 #### <a name='Orderresultsdescending'></a>Order results descending
 ```
 MATCH (a:airport) RETURN a ORDER BY a.elev DESC
@@ -150,11 +161,6 @@ MATCH (a:airport) RETURN count(a)
 #### <a name='Limitresults'></a>Limit results
 ```
 MATCH (a:airport) RETURN a LIMIT 5
-```
-
-#### <a name='Paginateresults'></a>Paginate results
-```
-MATCH (a:airport) RETURN a SKIP 5 LIMIT 5
 ```
 
 #### <a name='Joindistinctsetfromtwoqueries'></a>Join distinct set from two queries
@@ -184,6 +190,8 @@ Comparison | =, >, <, <>, <=, >=, IS NULL, IS NOT NULL
 Boolean | AND, OR, NOT, XOR
 String | STARTS WITH, ENDS WITH, CONTAINS, +
 LIST | +, IN, []
+Spatial | esri.graph.ST_Equals(,), esri.graph.ST_Contains(,), esri.graph.ST_Intersects(,), esri.graph.ST_GeoDistance(,), esri.graph.ST_WKTToGeometry(string)
+
 
 ## <a name='Functions'></a>Functions
 
@@ -197,13 +205,3 @@ Math - numeric | abs(), ceil(), floor(), rand(), round(), sign()
 Math - logarithmic | e(), exp(), log(), log10(), sqrt()
 Math - trigonometric | acos(), asin(), atan(), atan2(), cos(), cot(), degree(), pi(), radians(), sin(), tan()
 String | left(), lTrim(), replace(), reverse(), right(), rTrim(), split(), substring(), toLower(), toString(), toUpper(), trim()
-
-Key Operators and Functions | Definition 
------------- | ------------ 
-distinct
-```
-MATCH (n:Person)-[r:KNOWS]-(m:Person)
-RETURN DISTINCT n AS node
-```
-collect(expression) | The function collect() returns a single aggregated list containing the values returned by an expression. 
-
