@@ -2,7 +2,7 @@
 The below are some common examples of openCypher Syntax based upon the [iNaturalist Bee Observation dataset](https://developers.arcgis.com/javascript/latest/sample-code/sandbox/?sample=knowledgegraph-query) used in our JS Sample Code Sandbox environment.
 
 ## Read Query Structure
-These clauses provide the baseline pattern for search operations. OpenCypher keywords are not case-sensitive. Cypher IS case-sensitive for variables.
+These clauses and subclauses provide the baseline pattern for search operations. OpenCypher keywords are not case-sensitive. Cypher IS case-sensitive for variables.
 
 MATCH [WHERE]
 ```
