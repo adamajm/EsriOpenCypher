@@ -98,11 +98,6 @@ MATCH (a:airport {code: 'SEA'})-[:route]->(d) RETURN d
 ```
 MATCH path=(a:airport {code: 'SEA'})-[:route]->(d) RETURN path
 ```
-#### <a name='Findoptionalpattern'></a>Find optional pattern
-```
-OPTIONAL MATCH (a:airport {code: 'SEA'})-[:route]->(d) RETURN d
-```
-
 #### <a name='Findifsomethingexists'></a>Find if something exists
 ```
 MATCH (a:airport {code: 'SEA'})-[:route]->(d) RETURN d
@@ -118,14 +113,6 @@ MATCH (a:airport {code: 'SEA'}*2)-[:route]->(d) RETURN d
 #### <a name='Rangeofhops'></a>Range of hops
 ```
 MATCH (a:airport {code: 'SEA'})-[:route*1..3]->(d) RETURN d
-```
-#### <a name='Rangeofhopsminimumboundaryonly'></a>Range of hops (minimum boundary only)
-```
-MATCH (a:airport {code: 'SEA'})-[:route*1..]->(d) RETURN d
-```
-#### <a name='Rangeofhopsmaximumboundaryonly'></a>Range of hops (maximum boundary only)
-```
-MATCH (a:airport {code: 'SEA'})-[:route*..3]->(d) RETURN d
 ```
 
 ### <a name='ReturningValues'></a>Returning Values
@@ -190,17 +177,20 @@ Comparison | =, >, <, <>, <=, >=, IS NULL, IS NOT NULL
 Boolean | AND, OR, NOT, XOR
 String | STARTS WITH, ENDS WITH, CONTAINS, +
 LIST | +, IN, []
+Sorting | ASC, DES
 Spatial | esri.graph.ST_Equals(,), esri.graph.ST_Contains(,), esri.graph.ST_Intersects(,), esri.graph.ST_GeoDistance(,), esri.graph.ST_WKTToGeometry(string)
 
+## Working with DateTime
 
 ## <a name='Functions'></a>Functions
 
 Type | Functions
 ------------ | -------------
 Predicate | exists()
-Scalar | coalesce(), endNode(), head(), id(0, last(), length(), properties(), size(), startNode(), timestamp(), toBoolean(), toFloat(), toInteger(), type()
-Aggregating | avg(), collect(), count(), max(), min(), percentileCont(), percentileDisc(), stDev(), stDevP(), sum()
+Scalar | **coalesce()**, endNode(), head(), id(0), last(), length(), properties(), size(), startNode(), timestamp(), toBoolean(), toFloat(), toInteger(), type()
+Aggregating | avg(), **collect()**, **count()**, max(), min(), percentileCont(), percentileDisc(), stDev(), stDevP(), sum()
 List | keys(), labels(), nodes(), range(), relationships(), reverse(), tail()
+Dates | **localdatetime()**, date(), localtime(), **datetime()**, duration.between(a,b), duration.inMonths(a,b), duration.inDays(a,b), duration.inSeconds(a,b)
 Math - numeric | abs(), ceil(), floor(), rand(), round(), sign()
 Math - logarithmic | e(), exp(), log(), log10(), sqrt()
 Math - trigonometric | acos(), asin(), atan(), atan2(), cos(), cot(), degree(), pi(), radians(), sin(), tan()
