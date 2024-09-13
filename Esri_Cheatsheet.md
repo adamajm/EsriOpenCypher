@@ -21,10 +21,10 @@ RETURN [ORDER BY] [SKIP] [LIMIT]
 ```
 MATCH (e:ENTITIES)-[:ARE_RELATED_TO]->(oe:OTHER_ENTITIES)
 WHERE e.NUMBERPROPERTY > 10 
-WITH oe ORDER BY oe.PRICE
+WITH oe ORDER BY oe.PRICE DESC
 ```
 
-Extras: [UNION] [UNWIND]
+Extras: [UNION] [UNION ALL] [UNWIND]
 
 Note: The [USE] function in Cypher is not relevant in the ArcGIS implementation as all applications of clients require specification and authentication to the Knowledge Graph Service provided by the ArcGIS Knowledge Server, which brokers access to the underlying graph database. And there is a 1:1 relationship between the service and the database. Optional Match is not supported by OpenCypher
 
@@ -177,7 +177,7 @@ Comparison | =, >, <, <>, <=, >=, IS NULL, IS NOT NULL
 Boolean | AND, OR, NOT, XOR
 String | STARTS WITH, ENDS WITH, CONTAINS, +
 LIST | +, IN, []
-Sorting | ASC, DES
+Sorting | ORDER BY xxx ASC/DESC
 Spatial | esri.graph.ST_Equals(,), esri.graph.ST_Contains(,), esri.graph.ST_Intersects(,), esri.graph.ST_GeoDistance(,), esri.graph.ST_WKTToGeometry(string)
 
 ## Working with DateTime
