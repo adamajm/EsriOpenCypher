@@ -78,12 +78,10 @@ unwind
 	/vscode-markdown-toc-config -->
 <!-- /vscode-markdown-toc -->
 
-## <a name='ReadQueries'></a>Read Queries
-
-### <a name='PatternMatching'></a>Pattern Matching
+## <a name='PatternMatching'></a>Pattern Matching
 Pattern matching is the most basic actions one can do in openCypher and is the basis for all read queries.
 
-#### <a name='FindNodesbyLabelandProperty'></a>Find Entities by Type/Label and Specific Property
+### <a name='FindNodesbyLabelandProperty'></a>Find Entities by Type/Label and Specific Property
 ```
 MATCH (a:airport {code: 'SEA'}) RETURN a
 ```
@@ -91,66 +89,66 @@ MATCH (a:airport {code: 'SEA'}) RETURN a
 MATCH (a:airport) WHERE a.code='SEA' RETURN a
 ```
 
-#### <a name='Findpattern'></a>Find pattern
+### <a name='Findpattern'></a>Find pattern
 ```
 MATCH (a:airport {code: 'SEA'})-[:route]->(d) RETURN d
 ```
 ```
 MATCH path=(a:airport {code: 'SEA'})-[:route]->(d) RETURN path
 ```
-#### <a name='Findifsomethingexists'></a>Find if something exists
+### <a name='Findifsomethingexists'></a>Find if something exists
 ```
 MATCH (a:airport {code: 'SEA'})-[:route]->(d) RETURN d
 ```
 
-### <a name='Looping'></a>Looping
+## <a name='Looping'></a>Looping
 Looping through connections is a common pattern in property graphs and can be accomplished using either fixed or variable length paths.
 
-#### <a name='Fixednumberofloops'></a>Fixed number of loops
+### <a name='Fixednumberofloops'></a>Fixed number of loops
 ```
 MATCH (a:airport {code: 'SEA'}*2)-[:route]->(d) RETURN d
 ```
-#### <a name='Rangeofhops'></a>Range of hops
+### <a name='Rangeofhops'></a>Range of hops
 ```
 MATCH (a:airport {code: 'SEA'})-[:route*1..3]->(d) RETURN d
 ```
 
-### <a name='ReturningValues'></a>Returning Values
+## <a name='ReturningValues'></a>Returning Values
 Each read query must specify how to return values from the query.
 
-#### <a name='Returneverything'></a>Return everything
+### <a name='Returneverything'></a>Return everything
 ```
 MATCH (a) RETURN *
 ```
 
-#### <a name='Returncolumn'></a>Return property
+### <a name='Returncolumn'></a>Return property
 ```
 MATCH (a:airport) RETURN a.city
 ```
-#### <a name='Returncolumnwithalias'></a>Return property with alias
+### <a name='Returncolumnwithalias'></a>Return property with alias
 ```
 MATCH (a:airport) RETURN a.city AS dest
 ```
-#### <a name='Returndistinctvalues'></a>Return distinct values
+### <a name='Returndistinctvalues'></a>Return distinct values
 ```
 MATCH (a:airport) RETURN DISTINCT a.region
 ```
-#### <a name='Orderresultsdescending'></a>Order results descending
+### <a name='Orderresultsdescending'></a>Order results descending
 ```
 MATCH (a:airport) RETURN a ORDER BY a.elev DESC
 ```
 
-#### <a name='Returncountofresults'></a>Return count of results
+### <a name='Returncountofresults'></a>Return count of results
 ```
 MATCH (a:airport) RETURN count(a)
 ```
 
-#### <a name='Limitresults'></a>Limit results
+### <a name='Limitresults'></a>Limit results
 ```
 MATCH (a:airport) RETURN a LIMIT 5
 ```
 
-#### <a name='Joindistinctsetfromtwoqueries'></a>Join distinct set from two queries
+### <a name='Joindistinctsetfromtwoqueries'></a>Join distinct set from two queries
 ```
 MATCH (a:airport {code:'SEA'}) 
 RETURN a.city
@@ -158,7 +156,7 @@ UNION
 MATCH (a:airport {code:'ANC'}) 
 RETURN a.elev
 ```
-#### <a name='Joincombinedsetfromtwoqueries'></a>Join combined set from two queries
+### <a name='Joincombinedsetfromtwoqueries'></a>Join combined set from two queries
 ```
 MATCH (a:airport {code:'SEA'})-->(d) 
 RETURN d.city
