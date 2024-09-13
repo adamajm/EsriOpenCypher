@@ -2,12 +2,35 @@
 The below are some common examples of openCypher Syntax based upon the [iNaturalist Bee Observation dataset](https://developers.arcgis.com/javascript/latest/sample-code/sandbox/?sample=knowledgegraph-query) used in our JS Sample Code Sandbox environment.
 
 ## Read Query Structure
-These are the baseline for pattern search operations. OpenCypher keywords are not case-sensitive. Cypher IS case-sensitive for variables.
-[MATCH [WHERE]]
-[WITH [ORDER BY] [SKIP] [LIMIT] [WHERE]]
+These clauses provide the baseline pattern for search operations. OpenCypher keywords are not case-sensitive. Cypher IS case-sensitive for variables.
+
+MATCH [WHERE]
+```
+MATCH (e:ENTITIES)-[:ARE_RELATED_TO]->(oe:OTHERENTITIES)
+WHERE e.NUMBERPROPERTY > 10 
+```
+
+WITH [ORDER BY] [SKIP] [LIMIT] [WHERE]
+```
+MATCH (e:ENTITIES)-[:ARE_RELATED_TO]->(oe:OTHER_ENTITIES)
+WHERE e.NUMBERPROPERTY > 10 
+WITH oe ORDER BY oe.PRICE
+```
+
 RETURN [ORDER BY] [SKIP] [LIMIT]
+```
+MATCH (e:ENTITIES)-[:ARE_RELATED_TO]->(oe:OTHER_ENTITIES)
+WHERE e.NUMBERPROPERTY > 10 
+WITH oe ORDER BY oe.PRICE
+```
+
+Extras: [UNION] [UNWIND]
 
 Note: The [USE] function in Cypher is not relevant in the ArcGIS implementation as all applications of clients require specification and authentication to the Knowledge Graph Service provided by the ArcGIS Knowledge Server, which brokers access to the underlying graph database. And there is a 1:1 relationship between the service and the database. Optional Match is not supported by OpenCypher
+
+### Common Patterns
+* Using Variables for Entity Types, Relationship Types, or collections of results
+* Using Alias
 
 ## Example Queries - Reference Data Model
 ![image](https://github.com/user-attachments/assets/3953062e-2310-4379-a19a-bac9a23a81e2)
@@ -16,7 +39,7 @@ Note: The [USE] function in Cypher is not relevant in the ArcGIS implementation 
 <!-- vscode-markdown-toc -->
 * [Read Queries](#ReadQueries)
 	* [Pattern Matching](#PatternMatching)
-		* [Find Nodes by Label and Property](#FindNodesbyLabelandProperty)
+		* [Find Entities by Type and Property](#FindNodesbyLabelandProperty)
 		* [Find pattern](#Findpattern)
 	* [Looping](#Looping)
 		* [Fixed number of loops](#Fixednumberofloops)
@@ -45,12 +68,7 @@ Note: The [USE] function in Cypher is not relevant in the ArcGIS implementation 
 ### <a name='PatternMatching'></a>Pattern Matching
 Pattern matching is the most basic actions one can do in openCypher and is the basis for all read queries.
 
-#### <a name='FindNodeswithLabel'></a>Find Nodes with Label
-```
-MATCH (a:airport) RETURN a
-```
-
-#### <a name='FindNodesbyLabelandProperty'></a>Find Nodes by Label and Property
+#### <a name='FindNodesbyLabelandProperty'></a>Find Entities by Type/Label and Specific Property
 ```
 MATCH (a:airport {code: 'SEA'}) RETURN a
 ```
@@ -63,11 +81,7 @@ MATCH (a:airport) WHERE a.code='SEA' RETURN a
 MATCH (a:airport {code: 'SEA'})-[:route]->(d) RETURN d
 ```
 ```
-MATCH (a:airport {code: 'SEA'})<-[:route]-(d) RETURN d
-```
-#### <a name='Findpathpattern'></a>Find path pattern
-```
-MATCH p=(a:airport {code: 'SEA'})-[:route]->(d) RETURN p
+MATCH path=(a:airport {code: 'SEA'})-[:route]->(d) RETURN path
 ```
 #### <a name='Findoptionalpattern'></a>Find optional pattern
 ```
@@ -183,3 +197,13 @@ Math - numeric | abs(), ceil(), floor(), rand(), round(), sign()
 Math - logarithmic | e(), exp(), log(), log10(), sqrt()
 Math - trigonometric | acos(), asin(), atan(), atan2(), cos(), cot(), degree(), pi(), radians(), sin(), tan()
 String | left(), lTrim(), replace(), reverse(), right(), rTrim(), split(), substring(), toLower(), toString(), toUpper(), trim()
+
+Key Operators and Functions | Definition 
+------------ | ------------ 
+distinct
+```
+MATCH (n:Person)-[r:KNOWS]-(m:Person)
+RETURN DISTINCT n AS node
+```
+collect(expression) | The function collect() returns a single aggregated list containing the values returned by an expression. 
+
