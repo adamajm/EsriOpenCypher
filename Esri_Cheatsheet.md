@@ -28,8 +28,8 @@ Additional Key Subclauses: [UNION] [UNION ALL] [UNWIND]
 
 Note: The [USE] function in Cypher is not relevant in the ArcGIS implementation as all applications of clients require specification and authentication to the Knowledge Graph Service provided by the ArcGIS Knowledge Server, which brokers access to the underlying graph database. And there is a 1:1 relationship between the service and the database. Optional Match is not supported by OpenCypher
 
-### Common Patterns
-#### Using Variables & Aliases 
+## Common Patterns
+### Using Variables & Aliases 
 You can use varibles to represent  Entity Types, Relationship Types, or collections of results.
 Variables can be reused later in later clauses, operators or subqueries
 Alias can be defined by putting "AS" after operators.
@@ -37,13 +37,13 @@ Alias can be defined by putting "AS" after operators.
 WITH distinct(person) AS UniquePeople
 RETURN UniquePeople
 ```
-#### Create Distinct Lists 
+### Create Distinct Lists 
 Use Distinct(expression)
 ```
 MATCH (n:Person)-[r:KNOWS]-(m:Person)
 RETURN DISTINCT n AS UniquePersonList
 ```
-#### Collect & Unwind lists
+### Collect & Unwind lists
 collect(expression) | The function collect() returns a single aggregated list containing the values returned by an expression. 
 unwind
 ## <a name='Operators'></a>Operators
@@ -79,6 +79,8 @@ TBD
 ### Working with Spatial Functions
 TBD
 
+
+# openCypher Query Examples
 
 ## Example Queries - Reference Data Model
 ![image](https://github.com/user-attachments/assets/3953062e-2310-4379-a19a-bac9a23a81e2)
