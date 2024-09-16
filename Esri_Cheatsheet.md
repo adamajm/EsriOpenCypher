@@ -3,6 +3,7 @@ The below are some common examples of openCypher Syntax based upon the [iNatural
 
 ## Read Query Clauses & Structure
 These clauses and subclauses provide the baseline pattern for search operations. openCypher keywords are not case-sensitive. openCypher IS case-sensitive for variables.
+You must have a MATCH and RETURN clause. You can have multiple MATCH statements in a query, but only one RETURN. Others clauses/subclauses are Optional. WITH acts like a RETURN statement in the middle of your query, only carrying forward the variables you specify into the next part of your query. 
 
 MATCH [WHERE]
 ```
