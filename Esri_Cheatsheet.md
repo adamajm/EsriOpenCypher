@@ -46,38 +46,6 @@ RETURN DISTINCT n AS UniquePersonList
 #### Collect & Unwind lists
 collect(expression) | The function collect() returns a single aggregated list containing the values returned by an expression. 
 unwind
-
-## Example Queries - Reference Data Model
-![image](https://github.com/user-attachments/assets/3953062e-2310-4379-a19a-bac9a23a81e2)
-
-## <a name='TableofContents'></a>Table of Contents
-<!-- vscode-markdown-toc -->
-* [Read Queries](#ReadQueries)
-	* [Pattern Matching](#PatternMatching)
-		* [Find Entities by Type and Property](#FindNodesbyLabelandProperty)
-		* [Find pattern](#Findpattern)
-	* [Looping](#Looping)
-		* [Fixed number of loops](#Fixednumberofloops)
-		* [Range of hops](#Rangeofhops)
-	* [Returning Values](#ReturningValues)
-		* [Return everything](#Returneverything)
-		* [Return property](#Returncolumn)
-		* [Return property with alias](#Returncolumnwithalias)
-		* [Return distinct values](#Returndistinctvalues)
-		* [Order results ascending](#Orderresultsascending)
-		* [Return count of results](#Returncountofresults)
-		* [Limit results](#Limitresults)
-		* [Join distinct set from two queries](#Joindistinctsetfromtwoqueries)
-		* [Join combined set from two queries](#Joincombinedsetfromtwoqueries)
-* [Operators](#Operators)
-* [Functions](#Functions)
-
-<!-- vscode-markdown-toc-config
-	numbering=false
-	autoSave=true
-	/vscode-markdown-toc-config -->
-<!-- /vscode-markdown-toc -->
-
 ## <a name='Operators'></a>Operators
 
 Type | Operators
@@ -110,6 +78,38 @@ TBD
 
 ### Working with Spatial Functions
 TBD
+
+
+## Example Queries - Reference Data Model
+![image](https://github.com/user-attachments/assets/3953062e-2310-4379-a19a-bac9a23a81e2)
+
+## <a name='TableofContents'></a>Table of Contents
+<!-- vscode-markdown-toc -->
+* [Read Queries](#ReadQueries)
+	* [Pattern Matching](#PatternMatching)
+		* [Find Entities by Type and Property](#FindNodesbyLabelandProperty)
+		* [Find pattern](#Findpattern)
+	* [Looping](#Looping)
+		* [Fixed number of loops](#Fixednumberofloops)
+		* [Range of hops](#Rangeofhops)
+	* [Returning Values](#ReturningValues)
+		* [Return everything](#Returneverything)
+		* [Return property](#Returncolumn)
+		* [Return property with alias](#Returncolumnwithalias)
+		* [Return distinct values](#Returndistinctvalues)
+		* [Order results ascending](#Orderresultsascending)
+		* [Return count of results](#Returncountofresults)
+		* [Limit results](#Limitresults)
+		* [Join distinct set from two queries](#Joindistinctsetfromtwoqueries)
+		* [Join combined set from two queries](#Joincombinedsetfromtwoqueries)
+* [Operators](#Operators)
+* [Functions](#Functions)
+
+<!-- vscode-markdown-toc-config
+	numbering=false
+	autoSave=true
+	/vscode-markdown-toc-config -->
+<!-- /vscode-markdown-toc -->
 
 ## <a name='PatternMatching'></a>Pattern Matching
 Pattern matching is the most basic actions one can do in openCypher and is the basis for all read queries.
