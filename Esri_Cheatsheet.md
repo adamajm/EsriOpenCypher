@@ -30,6 +30,27 @@ Additional Key Subclauses: [UNION] [UNION ALL] [UNWIND]
 
 Note: The [USE] function in Cypher is not relevant in the ArcGIS implementation as all applications of clients require specification and authentication to the Knowledge Graph Service provided by the ArcGIS Knowledge Server, which brokers access to the underlying graph database. And there is a 1:1 relationship between the service and the database. Optional Match is not supported by OpenCypher
 
+## <a name='Functions'></a>Functions
+
+Type | Functions
+------------ | -------------
+Predicate | exists()
+Scalar | **coalesce()**, endNode(), head(), id(0), last(), length(), properties(), size(), startNode(), timestamp(), toBoolean(), toFloat(), toInteger(), type()
+Aggregating | avg(), **collect()**, **count()**, max(), min(), percentileCont(), percentileDisc(), stDev(), stDevP(), sum()
+List | keys(), labels(), nodes(), range(), relationships(), reverse(), tail()
+Dates | **localdatetime()**, date(), localtime(), **datetime()**, duration.between(a,b), duration.inMonths(a,b), duration.inDays(a,b), duration.inSeconds(a,b)
+Math - numeric | abs(), ceil(), floor(), rand(), round(), sign()
+Math - logarithmic | e(), exp(), log(), log10(), sqrt()
+Math - trigonometric | acos(), asin(), atan(), atan2(), cos(), cot(), degree(), pi(), radians(), sin(), tan()
+String | left(), lTrim(), replace(), reverse(), right(), rTrim(), split(), substring(), toLower(), toString(), toUpper(), trim()
+Spatial | esri.graph.ST_Equals(,), esri.graph.ST_Contains(,), esri.graph.ST_Intersects(,), esri.graph.ST_GeoDistance(,), esri.graph.ST_WKTToGeometry(string)
+
+### Working with DateTime Functions
+TBD
+
+### Working with Spatial Functions
+TBD
+
 ## Common Patterns
 ### Using Variables & Aliases 
 You can use varibles to represent  Entity Types, Relationship Types, or collections of results.
@@ -59,28 +80,6 @@ Boolean | AND, OR, NOT, XOR
 String | STARTS WITH, ENDS WITH, CONTAINS, +
 LIST | +, IN, []
 Sorting | ORDER BY xxx ASC/DESC
-
-## <a name='Functions'></a>Functions
-
-Type | Functions
------------- | -------------
-Predicate | exists()
-Scalar | **coalesce()**, endNode(), head(), id(0), last(), length(), properties(), size(), startNode(), timestamp(), toBoolean(), toFloat(), toInteger(), type()
-Aggregating | avg(), **collect()**, **count()**, max(), min(), percentileCont(), percentileDisc(), stDev(), stDevP(), sum()
-List | keys(), labels(), nodes(), range(), relationships(), reverse(), tail()
-Dates | **localdatetime()**, date(), localtime(), **datetime()**, duration.between(a,b), duration.inMonths(a,b), duration.inDays(a,b), duration.inSeconds(a,b)
-Math - numeric | abs(), ceil(), floor(), rand(), round(), sign()
-Math - logarithmic | e(), exp(), log(), log10(), sqrt()
-Math - trigonometric | acos(), asin(), atan(), atan2(), cos(), cot(), degree(), pi(), radians(), sin(), tan()
-String | left(), lTrim(), replace(), reverse(), right(), rTrim(), split(), substring(), toLower(), toString(), toUpper(), trim()
-Spatial | esri.graph.ST_Equals(,), esri.graph.ST_Contains(,), esri.graph.ST_Intersects(,), esri.graph.ST_GeoDistance(,), esri.graph.ST_WKTToGeometry(string)
-
-### Working with DateTime Functions
-TBD
-
-### Working with Spatial Functions
-TBD
-
 
 # openCypher Query Examples
 The below are some common examples of openCypher Syntax based upon the [iNaturalist Bee Observation dataset](https://developers.arcgis.com/javascript/latest/sample-code/sandbox/?sample=knowledgegraph-query) used in our JS Sample Code Sandbox environment. 
