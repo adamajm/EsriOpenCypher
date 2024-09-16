@@ -1,5 +1,5 @@
 # openCypher Syntax Cheatsheet
-The below are some common examples of openCypher Syntax based upon the [iNaturalist Bee Observation dataset](https://developers.arcgis.com/javascript/latest/sample-code/sandbox/?sample=knowledgegraph-query) used in our JS Sample Code Sandbox environment. Please also see our [ArcGIS openCypher Query Documentation](https://enterprise.arcgis.com/en/knowledge/latest/introduction/query-a-knowledge-graph.htm) for some additional explanations.
+Please also see our [ArcGIS openCypher Query Documentation](https://enterprise.arcgis.com/en/knowledge/latest/introduction/query-a-knowledge-graph.htm) for some additional explanations.
 
 ## Read Query Clauses & Structure
 These clauses and subclauses provide the baseline pattern for search operations. openCypher keywords are not case-sensitive. openCypher IS case-sensitive for variables.
@@ -83,6 +83,7 @@ TBD
 
 
 # openCypher Query Examples
+The below are some common examples of openCypher Syntax based upon the [iNaturalist Bee Observation dataset](https://developers.arcgis.com/javascript/latest/sample-code/sandbox/?sample=knowledgegraph-query) used in our JS Sample Code Sandbox environment. 
 
 ## Example Queries - Reference Data Model
 ![image](https://github.com/user-attachments/assets/3953062e-2310-4379-a19a-bac9a23a81e2)
