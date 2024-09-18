@@ -69,7 +69,7 @@ LIST | +, IN, []
 Sorting | ORDER BY xxx ASC/DESC 
 
 ### Working with DateTime Functions
-You must use on of ArcGIS datetime field types.
+You must use ArcGIS datetime field types.
 
 Field type | function | Syntax | Example
 ------------  | -------------- | --------------------- | -------------------------
@@ -77,6 +77,12 @@ Date | localdatetime() | localdatetime('YYYY-MM-DDThh:mm:ss.sss') | localdatetim
 Date only | date() | date('YYYY-MM-DD') | date('2015-07-24')
 Time only | localtime() | localtime('hh:mm:ss.sss') | localtime('21:40:53.142')
 Timestamp offset | datetime() | datetime('YYYY-MM-DDThh:mm:ss.sssZ') or datetime('YYYY-MM-DDThh:mm:ss.sss+00:00') | datetime('2015-07-24T21:40:53.142Z') or datetime('2015-07-21T21:40:53.142-08:00')
+
+**Common DateTime Patterns**
+Retrieve a date or time value
+Filter matched records by a relative date (e.g. find employees that started working at the company before 2024-01-01)  
+Duration Compare dates to return a value between dates (e.g. how many days were between these two events)
+Filter matched records by a duration value (e.g. find employees that has worked for more than 60 days)
 
 
 ### <a name='spatial'></a>Working with Spatial Functions
