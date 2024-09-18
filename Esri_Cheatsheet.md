@@ -11,7 +11,7 @@ MATCH (e:ENTITIES)-[:ARE_RELATED_TO]->(oe:OTHERENTITIES)
 WHERE e.NUMBERPROPERTY > 10 
 ```
 
-WITH [ORDER BY] [SKIP] [LIMIT] [WHERE]
+WITH [ORDER BY] [LIMIT] [WHERE]
 ```
 MATCH (e:ENTITIES)-[:ARE_RELATED_TO]->(oe:OTHER_ENTITIES)
 WHERE e.NUMBERPROPERTY > 10 
@@ -35,7 +35,7 @@ Note: The [USE] function in Cypher is not relevant in the ArcGIS implementation 
 Type | Functions
 ------------ | -------------
 Predicate | exists()
-Scalar | **coalesce()**, endNode(), head(), id(0), last(), length(), properties(), size(), startNode(), timestamp(), toBoolean(), toFloat(), toInteger(), type()
+Scalar | **coalesce()**, endNode(), **head()**, **id(0)**, last(), length(), properties(), size(), startNode(), timestamp(), toBoolean(), toFloat(), toInteger(), type()
 Aggregating | avg(), **collect()**, **count()**, max(), min(), percentileCont(), percentileDisc(), stDev(), stDevP(), sum()
 List | keys(), labels(), nodes(), range(), relationships(), reverse(), tail()
 Dates | **localdatetime()**, date(), localtime(), **datetime()**, duration.between(a,b), duration.inMonths(a,b), duration.inDays(a,b), duration.inSeconds(a,b)
@@ -45,8 +45,27 @@ Math - trigonometric | acos(), asin(), atan(), atan2(), cos(), cot(), degree(), 
 String | left(), lTrim(), replace(), reverse(), right(), rTrim(), split(), substring(), toLower(), toString(), toUpper(), trim()
 Spatial | esri.graph.ST_Equals(,), esri.graph.ST_Contains(,), esri.graph.ST_Intersects(,), esri.graph.ST_GeoDistance(,), esri.graph.ST_WKTToGeometry(string)
 
+## <a name='Operators'></a>Operators
+
+Type | Operators
+------------ | -------------
+General | DISTINCT, x.y (property access)
+Math | +, -, *, /, %, ^
+Comparison | =, >, <, <>, <=, >=, IS NULL, IS NOT NULL
+Boolean | AND, OR, NOT, XOR
+String | STARTS WITH, ENDS WITH, CONTAINS, +
+LIST | +, IN, []
+Sorting | ORDER BY xxx ASC/DESC 
+
 ### Working with DateTime Functions
-TBD
+You must use on of ArcGIS datetime field types.
+------------  | -------------- | --------------------- | -------------------------
+Field type | function | Syntax | Example
+Date | localdatetime() | localdatetime('YYYY-MM-DDThh:mm:ss.sss') | localdatetime('2015-07-24T21:40:53.142')
+Date only | date() | date('YYYY-MM-DD') | date('2015-07-24')
+Time only | localtime() | localtime('hh:mm:ss.sss') | localtime('21:40:53.142')
+Timestamp offset | datetime() | datetime('YYYY-MM-DDThh:mm:ss.sssZ') or datetime('YYYY-MM-DDThh:mm:ss.sss+00:00') | datetime('2015-07-24T21:40:53.142Z') or datetime('2015-07-21T21:40:53.142-08:00')
+
 
 ### Working with Spatial Functions
 TBD
@@ -69,17 +88,6 @@ RETURN DISTINCT n AS UniquePersonList
 ### Collect & Unwind lists
 collect(expression) | The function collect() returns a single aggregated list containing the values returned by an expression. 
 unwind
-## <a name='Operators'></a>Operators
-
-Type | Operators
------------- | -------------
-General | DISTINCT, x.y (property access)
-Math | +, -, *, /, %, ^
-Comparison | =, >, <, <>, <=, >=, IS NULL, IS NOT NULL
-Boolean | AND, OR, NOT, XOR
-String | STARTS WITH, ENDS WITH, CONTAINS, +
-LIST | +, IN, []
-Sorting | ORDER BY xxx ASC/DESC
 
 # openCypher Query Examples
 The below are some common examples of openCypher Syntax based upon the [iNaturalist Bee Observation dataset](https://developers.arcgis.com/javascript/latest/sample-code/sandbox/?sample=knowledgegraph-query) used in our JS Sample Code Sandbox environment. 
