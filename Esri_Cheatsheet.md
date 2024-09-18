@@ -43,7 +43,18 @@ Math - numeric | abs(), ceil(), floor(), rand(), round(), sign()
 Math - logarithmic | e(), exp(), log(), log10(), sqrt()
 Math - trigonometric | acos(), asin(), atan(), atan2(), cos(), cot(), degree(), pi(), radians(), sin(), tan()
 String | left(), lTrim(), replace(), reverse(), right(), rTrim(), split(), substring(), toLower(), toString(), toUpper(), trim()
-Spatial | esri.graph.ST_Equals(,), esri.graph.ST_Contains(,), esri.graph.ST_Intersects(,), esri.graph.ST_GeoDistance(,), esri.graph.ST_WKTToGeometry(string)
+[Spatial](#spatial) | esri.graph.ST_Equals(,), esri.graph.ST_Contains(,), esri.graph.ST_Intersects(,), esri.graph.ST_GeoDistance(,), esri.graph.ST_WKTToGeometry(string)
+
+### Common Functions
+Function | Syntax | Description
+------ | ----------- | ---------------
+coalesce() | 
+head() | 
+id() | 
+collect()
+count()
+localdatetime()
+datetime()
 
 ## <a name='Operators'></a>Operators
 
@@ -59,15 +70,16 @@ Sorting | ORDER BY xxx ASC/DESC
 
 ### Working with DateTime Functions
 You must use on of ArcGIS datetime field types.
-------------  | -------------- | --------------------- | -------------------------
+
 Field type | function | Syntax | Example
+------------  | -------------- | --------------------- | -------------------------
 Date | localdatetime() | localdatetime('YYYY-MM-DDThh:mm:ss.sss') | localdatetime('2015-07-24T21:40:53.142')
 Date only | date() | date('YYYY-MM-DD') | date('2015-07-24')
 Time only | localtime() | localtime('hh:mm:ss.sss') | localtime('21:40:53.142')
 Timestamp offset | datetime() | datetime('YYYY-MM-DDThh:mm:ss.sssZ') or datetime('YYYY-MM-DDThh:mm:ss.sss+00:00') | datetime('2015-07-24T21:40:53.142Z') or datetime('2015-07-21T21:40:53.142-08:00')
 
 
-### Working with Spatial Functions
+### <a name='spatial'></a>Working with Spatial Functions
 TBD
 
 ## Common Patterns
