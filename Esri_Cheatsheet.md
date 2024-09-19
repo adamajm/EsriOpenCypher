@@ -99,15 +99,26 @@ WITH distinct(person) AS UniquePeople
 RETURN UniquePeople
 ```
 ### Create Distinct Lists 
-Use Distinct(expression)
+Use DISTINCT(expression) | Returns only unique instances or nodes within the expression
 ```
 MATCH (n:Person)-[r:KNOWS]-(m:Person)
 RETURN DISTINCT n AS UniquePersonList
 ```
 ### Collect & Unwind lists
-collect(expression) | The function collect() returns a single aggregated list containing the values returned by an expression. 
-unwind
+COLLECT(expression) | Returns a single aggregated list containing the values returned by an expression. 
+UNWIND(expression) | 
+```
+// Find enemy units with a lot of reconnaissance equipment, and return the list of equipment, grouped by unit
 
+MATCH (u:Unit)-[:HasEquipment]->(e:Equipment)
+WITH u, COLLECT(e) AS equipmentList
+RETURN u, equipmentList
+```
+Result will should return:
+
+UnitA, [equipment1, equipment2, equipment3...]
+UnitB, [equipment2, equipment18]
+...
 # openCypher Query Examples
 The below are some common examples of openCypher Syntax based upon the [iNaturalist Bee Observation dataset](https://developers.arcgis.com/javascript/latest/sample-code/sandbox/?sample=knowledgegraph-query) used in our JS Sample Code Sandbox environment. 
 
