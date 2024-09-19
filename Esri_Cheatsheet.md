@@ -1,5 +1,5 @@
 # openCypher Syntax Cheatsheet
-Please also see our [ArcGIS openCypher Query Documentation](https://enterprise.arcgis.com/en/knowledge/latest/introduction/query-a-knowledge-graph.htm) for some additional explanations.
+Please also see our [ArcGIS openCypher Query Documentation](https://enterprise.arcgis.com/en/knowledge/latest/introduction/query-a-knowledge-graph.htm) for some additional explanations.This is not an exhaustive list of openCypher functionality implemented in ArcGIS.
 
 ## Read Query Clauses & Structure
 These clauses and subclauses provide the baseline pattern for search operations. openCypher keywords are not case-sensitive. openCypher IS case-sensitive for variables.
