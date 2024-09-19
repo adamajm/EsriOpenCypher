@@ -60,13 +60,13 @@ datetime()
 
 Type | Operators
 ------------ | -------------
-General | DISTINCT, x.y (property access)
+General | DISTINCT, Entity.y ("y" property access)
 Math | +, -, *, /, %, ^
 Comparison | =, >, <, <>, <=, >=, IS NULL, IS NOT NULL
 Boolean | AND, OR, NOT, XOR
 String | STARTS WITH, ENDS WITH, CONTAINS, +
 LIST | +, IN, []
-Sorting | ORDER BY xxx ASC/DESC 
+Sorting | ORDER BY xxx [ASC/DESC] 
 
 ### Working with DateTime Functions
 You must use ArcGIS datetime field types.
