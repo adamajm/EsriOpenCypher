@@ -87,7 +87,12 @@ Timestamp offset | datetime() | datetime('YYYY-MM-DDThh:mm:ss.sssZ') or datetime
 
 
 ### <a name='spatial'></a>Working with Spatial Functions
-TBD
+Function | Syntax | Description | Example 
+------ | ----------- | --------------- | -----------------------
+ST_Equals | esri.graph.ST_Equals(geometry1, geometry2) | Returns entities with equal geometries. | MATCH (p1:Person), (p2:Person) WHERE esri.graph.ST_Equals(p1.shape, p2.shape) RETURN p1, p2 returns Person entities p1 and p2 entities with equal shapes; that is, both Person entities have identical location geometries.
+ST_Intersects | esri.graph.ST_Intersects(geometry1, geometry2) | Returns entities with intersecting geometries. | MATCH (e:Employee), (f:Facility) WHERE esri.graph.ST_Intersects(e.shape, f.shape) RETURN e, f returns Employee entities and Facility entities, e and f, respectively, where geometries for the Employee and Facility entities intersect.
+ST_Contains | esri.graph.ST_Contains(geometry1, geometry2) | Returns entities whose geometries are contained by the specified geometry. | MATCH (f:Facility) WHERE esri.graph.ST_Contains(esri.graph.ST_WKTToGeometry("POINT (-117.1964763 34.0572046)"), f.shape) RETURN f returns Facility entities, f, whose geometries contain the specified point.
+ST_GeoDistance | esri.graph.ST_GeoDistance(geometry1, geometry2) | Returns the distance between the two geometries | In the query MATCH (n), (e) WHERE esri.graph.ST_GeoDistance(n.shape, e.shape) as distance RETURN n, e, the distance variable in the WHERE clause stores the geodesic distance that is calculated between the entities n and e.
 
 ## Common Patterns
 ### Using Variables & Aliases 
