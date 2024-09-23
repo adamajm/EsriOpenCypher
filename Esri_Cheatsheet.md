@@ -57,8 +57,6 @@ head() | head(expression reterning a list) | The function head() returns the fir
 id() | id(expression returning node or relationship) | The function id() returns a node or a relationship identifier, unique by database, as an integer value.
 collect() | collect(input) | Returns a single list containing all the values returned by an expression. Nulls ignored.
 count() | count(input) | Returns the number of values or rows as integer value.
-localdatetime()
-datetime()
 
 ## <a name='Operators'></a>Operators
 
