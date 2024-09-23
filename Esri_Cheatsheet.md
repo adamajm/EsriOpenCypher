@@ -38,7 +38,7 @@ Predicate | exists()
 Scalar | **coalesce()**, endNode(), **head()**, **id(0)**, last(), length(), properties(), size(), startNode(), timestamp(), toBoolean(), toFloat(), toInteger(), type()
 Aggregating | avg(), **collect()**, **count()**, max(), min(), percentileCont(), percentileDisc(), stDev(), stDevP(), sum()
 List | keys(), labels(), nodes(), range(), relationships(), reverse(), tail()
-Dates | **localdatetime()**, date()*, localtime()*, **datetime()***, duration.between(a,b)^, duration.inMonths(a,b)^, duration.inDays(a,b)^, duration.inSeconds(a,b)^
+Dates | **localdatetime()** *, date() *, localtime() *, **datetime()** *, duration.between(a,b)^, duration.inMonths(a,b)^, duration.inDays(a,b)^, duration.inSeconds(a,b)^
 Math - numeric | abs(), ceil(), floor(), rand(), round(), sign()
 Math - logarithmic | e(), exp(), log(), log10(), sqrt()
 Math - trigonometric | acos(), asin(), atan(), atan2(), cos(), cot(), degree(), pi(), radians(), sin(), tan()
