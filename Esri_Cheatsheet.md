@@ -48,11 +48,11 @@ String | left(), lTrim(), replace(), reverse(), right(), rTrim(), split(), subst
 ### Common Functions
 Function | Syntax | Description
 ------ | ----------- | ---------------
-coalesce() | 
-head() | 
-id() | 
-collect()
-count()
+coalesce() | coalesce(expression [, expression]*) | Returns the first non-null value in a list of expressions.
+head() | head(expression reterning a list) | The function head() returns the first element in a list, if the expression returns a list.
+id() | id(expression returning node or relationship) | The function id() returns a node or a relationship identifier, unique by database, as an integer value.
+collect() | collect(input) | Returns a single list containing all the values returned by an expression. Nulls ignored.
+count() | count(input) | Returns the number of values or rows as integer value.
 localdatetime()
 datetime()
 
