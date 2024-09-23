@@ -46,6 +46,7 @@ String | left(), lTrim(), replace(), reverse(), right(), rTrim(), split(), subst
 [Spatial](#spatial) | esri.graph.ST_Equals(,), esri.graph.ST_Contains(,), esri.graph.ST_Intersects(,), esri.graph.ST_GeoDistance(,), esri.graph.ST_WKTToGeometry(string)
 
 * Only available in ArcGIS Enterprise 11.2+
+
 ^ Only available in ArcGIS Enterprise 11.3+
 
 ### Common Functions
