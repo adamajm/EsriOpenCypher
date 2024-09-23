@@ -85,9 +85,13 @@ Timestamp offset | datetime() | datetime('YYYY-MM-DDThh:mm:ss.sssZ') or datetime
 **Common DateTime Patterns**
 
 * Retrieve a date or time value
-* Filter matched records by a relative date (e.g. find employees that started working at the company before 2024-01-01)  
-* Duration Compare dates to return a value between dates (e.g. how many days were between these two events)
+* Filter matched records by a relative date (e.g. find employees that started working at the company before 2024-01-01)
+MATCH path=(:Person)-[ea:employeedAt]->(:Employer {EmployerName: "Company XYZ"}) WHERE ea.hireDate < datetime('2024-01-01T12:00-00:00') RETURN path
+ 
+* Duration - Compare dates to return a value between dates (e.g. how many days were between these two events)
 * Filter matched records by a duration value (e.g. find employees that has worked for more than 60 days)
+
+For example, to find people who sold a vehicle that they owned for less than two years, use a query such as MATCH path=(:Person)-[hv:HasVehicle]->(:Vehicle) WHERE hv.endDate < (hv.acquisitionDate + duration('P2Y')) RETURN path, duration.between(hv.acquisitionDate,hv.endDate) as TimeOwned. All paths are returned where the HasVehicle relationship has an endDate property and the duration between the endDate and the acquisitionDate property is less than two years. The query returns both the path and the duration of time that the vehicle was owned.
 
 
 ### <a name='spatial'></a>Working with Spatial Functions
