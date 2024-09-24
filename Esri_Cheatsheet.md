@@ -82,15 +82,11 @@ Timestamp offset | datetime() | datetime('YYYY-MM-DDThh:mm:ss.sssZ') or datetime
 
 **Common DateTime Patterns**
 
-* Retrieve or convert a date or time value
-```
-WHERE date(n.datetimePropety) > date('2024-01-01')_
-```
- 
+* Retrieve or convert a date or time value 
 * Filter matched records by a relative date (e.g. find employees that started working at the company before 2024-01-01)
 ```
 MATCH path=(:Person)-[ea:employeedAt]->(:Employer {EmployerName: "Company XYZ"})
-WHERE ea.hireDate < datetime('2024-01-01T12:00-00:00')
+WHERE ea.hireDate < datetime('2024-01-01T12:00:00.000Z)')
 RETURN path
 ``` 
 * Duration - Compare dates to return a value between dates (e.g. how many days were between these two events)
@@ -112,7 +108,14 @@ ST_Intersects | esri.graph.ST_Intersects (geometry1, geometry2) | Returns entiti
 ST_Contains | esri.graph.ST_Contains (geometry1, geometry2) | Returns entities whose geometries are contained by the first specified geometry. | _MATCH (f:Facility) WHERE esri.graph.ST_Contains(esri.graph.ST_WKTToGeometry ("POINT (-117.1964763 34.0572046)"), f.shape) RETURN f_  - Returns Facility entities, f, whose geometries contain the specified point.
 ST_GeoDistance | esri.graph.ST_GeoDistance (geometry1, geometry2) | Returns the distance between the two geometries | _MATCH (n), (e) RETURN esri.graph.ST_GeoDistance(n.shape, e.shape) as distance_ - Returns each node in the graph and their the distance variable in the WHERE clause stores the geodesic distance that is calculated between the entities n and e.
 
-Note that Geodesic distance
+Note that Geodesic distance is returned in Meters. Other units of meature must be calculated. 
+For example, kilometers would be 
+```
+esri.graph.ST_GeoDistance (geometry1, geometry2)*1000 AS DistanceInKM
+```
+```
+esri.graph.ST_GeoDistance (geometry1, geometry2)*0.000621371 AS DistanceInMiles
+```
 
 **Constructing a geometry out of Well Known Text**
 You can also specify a geometry that represents a spatial location. You can construct a geometry from a string using the operator esri.graph.ST_WKTToGeometry(string) where the string parameter is an OGC simple feature specified in the well-known text format. For example, to create a geometry representing the coordinates 117.1964763°W 34.0572046°N, you would use the operator esri.graph.ST_WKTToGeometry("POINT (-117.1964763 34.0572046)"). A geometry constructed in this manner can only be specified in the first geometry argument for the spatial operators.
