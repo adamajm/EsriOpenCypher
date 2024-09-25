@@ -23,6 +23,7 @@ RETURN [ORDER BY] [SKIP] [LIMIT]
 MATCH (e:ENTITIES)-[:ARE_RELATED_TO]->(oe:OTHER_ENTITIES)
 WHERE e.NUMBERPROPERTY > 10 
 WITH oe ORDER BY oe.PRICE DESC
+WHERE oe.PRICE > 50
 RETURN e.Name LIMIT 10
 ```
 
@@ -39,7 +40,7 @@ Scalar | **coalesce()**, endNode(), **head()**, **id(0)**, last(), length(), pro
 Aggregating | avg(), **collect()**, **count()**, max(), min(), percentileCont(), percentileDisc(), stDev(), stDevP(), sum()
 List | keys(), labels(), nodes(), range(), relationships(), reverse(), tail()
 Dates | **localdatetime()** *, date() *, localtime() *, **datetime()** *, duration.between(a,b)^, duration.inMonths(a,b)^, duration.inDays(a,b)^, duration.inSeconds(a,b)^
-Math - numeric | abs(), ceil(), floor(), rand(), round(), sign()
+Math - numeric | abs(), ceil(), floor(), rand(), **round()**, sign()
 Math - logarithmic | e(), exp(), log(), log10(), sqrt()
 Math - trigonometric | acos(), asin(), atan(), atan2(), cos(), cot(), degree(), pi(), radians(), sin(), tan()
 String | left(), lTrim(), replace(), reverse(), right(), rTrim(), split(), substring(), toLower(), toString(), toUpper(), trim()
@@ -52,7 +53,7 @@ String | left(), lTrim(), replace(), reverse(), right(), rTrim(), split(), subst
 ### Common Functions
 Function | Syntax | Description
 ------ | ----------- | ---------------
-coalesce() | coalesce(expression [, expression]*) | Returns the first non-null value in a list of expressions.
+coalesce() | coalesce(expression [, expression]*) | Returns the first non-null value in a list of expressions. E.g. Return either p.Name or p.NameAlias if some p.Names are null
 head() | head(expression reterning a list) | The function head() returns the first element in a list, if the expression returns a list.
 id() | id(expression returning node or relationship) | The function id() returns a node or a relationship identifier, unique by database, as an integer value.
 collect() | collect(input) | Returns a single list containing all the values returned by an expression. Nulls ignored.
@@ -122,12 +123,13 @@ You can also specify a geometry that represents a spatial location. You can cons
 
 ## Common Patterns
 ### Using Variables & Aliases 
-You can use varibles to represent  Entity Types, Relationship Types, or collections of results.
+You can use varibles to represent Entity Types, Relationship Types, paths or lists of results from an expression.
 Variables can be reused later in later clauses, operators or subqueries
 Alias can be defined by putting "AS" after operators.
 ```
-WITH distinct(person) AS UniquePeople
-RETURN UniquePeople
+MATCH (**person**:Person)-[:hasPet]->(dog:Pet {type:"dog"})
+WITH distinct **person** AS **UniqueDogOwner**
+RETURN UniqueDogOwner
 ```
 ### Create Distinct Lists 
 Use DISTINCT(expression) | Returns only unique instances or nodes within the expression
