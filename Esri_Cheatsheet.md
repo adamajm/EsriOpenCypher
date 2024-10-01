@@ -43,7 +43,7 @@ Predicate | exists()
 Scalar | **coalesce()**, endNode(), **head()**, **id(0)**, last(), length(), properties(), size(), startNode(), timestamp(), toBoolean(), toFloat(), toInteger(), type()
 Aggregating | avg(), **collect()**, **count()**, max(), min(), percentileCont(), percentileDisc(), stDev(), stDevP(), sum()
 List | keys(), labels(), nodes(), range(), relationships(), reverse(), tail()
-[Dates](#DateTime) | **localdatetime()** *, date() *, localtime() *, **datetime()** *, duration.between(a,b)^, duration.inMonths(a,b)^, duration.inDays(a,b)^, duration.inSeconds(a,b)^
+[Dates](#Datetime) | **localdatetime()** *, date() *, localtime() *, **datetime()** *, duration.between(a,b)^, duration.inMonths(a,b)^, duration.inDays(a,b)^, duration.inSeconds(a,b)^
 Math - numeric | abs(), ceil(), floor(), rand(), **round()**, sign()
 Math - logarithmic | e(), exp(), log(), log10(), sqrt()
 Math - trigonometric | acos(), asin(), atan(), atan2(), cos(), cot(), degree(), pi(), radians(), sin(), tan()
@@ -75,7 +75,7 @@ String | STARTS WITH, ENDS WITH, CONTAINS, +
 LIST | +, IN, []
 Sorting | ORDER BY xxx [ASC/DESC] 
 
-## <a name='DateTime'></a>Working with DateTime Functions
+## <a name='Datetime'></a>Working with DateTime Functions
 You must use ArcGIS datetime field types.
 
 Field type | function | Syntax | Example
@@ -161,23 +161,22 @@ The below are some common examples of openCypher Syntax based upon the [iNatural
 
 ## <a name='TableofContents'></a>Table of Contents
 <!-- vscode-markdown-toc -->
-* [Read Queries](#ReadQueries)
-	* [Pattern Matching](#PatternMatching)
-		* [Find Entities by Type and Property](#FindNodesbyLabelandProperty)
-		* [Find pattern](#Findpattern)
-	* [Looping](#Looping)
-		* [Fixed number of loops](#Fixednumberofloops)
-		* [Range of hops](#Rangeofhops)
-	* [Returning Values](#ReturningValues)
-		* [Return everything](#Returneverything)
-		* [Return property](#Returncolumn)
-		* [Return property with alias](#Returncolumnwithalias)
-		* [Return distinct values](#Returndistinctvalues)
-		* [Order results ascending](#Orderresultsascending)
-		* [Return count of results](#Returncountofresults)
-		* [Limit results](#Limitresults)
-		* [Join distinct set from two queries](#Joindistinctsetfromtwoqueries)
-		* [Join combined set from two queries](#Joincombinedsetfromtwoqueries)
+* [Pattern Matching](#PatternMatching)
+	* [Find Entities by Type and Property](#FindNodesbyLabelandProperty)
+	* [Find pattern](#Findpattern)
+* [Looping](#Looping)
+	* [Fixed number of loops](#Fixednumberofloops)
+	* [Range of hops](#Rangeofhops)
+* [Returning Values](#ReturningValues)
+	* [Return everything](#Returneverything)
+	* [Return property](#Returncolumn)
+	* [Return property with alias](#Returncolumnwithalias)
+	* [Return distinct values](#Returndistinctvalues)
+	* [Order results ascending](#Orderresultsascending)
+	* [Return count of results](#Returncountofresults)
+	* [Limit results](#Limitresults)
+	* [Join distinct set from two queries](#Joindistinctsetfromtwoqueries)
+	* [Join combined set from two queries](#Joincombinedsetfromtwoqueries)
 
 <!-- vscode-markdown-toc-config
 	numbering=false
