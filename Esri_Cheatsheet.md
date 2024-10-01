@@ -1,7 +1,11 @@
 # openCypher Syntax Cheatsheet
 Please also see our [ArcGIS openCypher Query Documentation](https://enterprise.arcgis.com/en/knowledge/latest/introduction/query-a-knowledge-graph.htm) for some additional explanations.This is not an exhaustive list of openCypher functionality implemented in ArcGIS.
 
-## Read Query Clauses & Structure
+* [Clauses](#Clauses)
+* [Functions](#Functions)
+* [Operators](#Operators)
+
+## <a name='Clauses'></a>Read Query Clauses & Structure
 These clauses and subclauses provide the baseline pattern for search operations. openCypher keywords are not case-sensitive. openCypher IS case-sensitive for variables.
 You must have a MATCH and RETURN clause. You can have multiple MATCH statements in a query, but only one RETURN. Others clauses/subclauses are Optional. WITH acts like a RETURN statement in the middle of your query, only carrying forward the variables you specify into the next part of your query. 
 
@@ -83,17 +87,15 @@ Timestamp offset | datetime() | datetime('YYYY-MM-DDThh:mm:ss.sssZ') or datetime
 
 **Common DateTime Patterns**
 
-* Retrieve or convert a date or time value 
-* Filter matched records by a relative date (e.g. find employees that started working at the company before 2024-01-01)
+* Create a date from a typed-in-string, or convert a datetime value on an existing property. These operations are often done to filter matched records by a relative date (e.g. find employees that started working at the company before 2024-01-01). Comparison dates should be converted to the same datetime property type.
 ```
 MATCH path=(:Person)-[ea:employeedAt]->(:Employer {EmployerName: "Company XYZ"})
 WHERE ea.hireDate < datetime('2024-01-01T12:00:00.000Z)')
 RETURN path
 ``` 
-* Duration - Compare dates to return a value between dates (e.g. how many days were between these two events)
-* Filter matched records by a duration value (e.g. find employees that has worked for more than 60 days)
+* Duration - Compare two dates to return a number value between them (e.g. how many days were between these two events). Filter matched records by a duration value (e.g. find employees that has worked for more than 60 days). Use the ISO 8601 time duration format and ADD/SUBTRACT it from another datetime field. For example, a duration of P1Y2M3DT4H5M6S represents a time interval of one year, two months, three days, four hours, five minutes, and six seconds.
 
-For example, to find people who sold a vehicle that they owned for less than two years, use a query such as 
+Example: To find people who sold a vehicle that they owned for less than two years, use a query such as
 ```
 MATCH path=(:Person)-[hv:HasVehicle]->(:Vehicle) WHERE hv.endDate < (hv.acquisitionDate + duration('P2Y')) RETURN path, duration.between(hv.acquisitionDate,hv.endDate) as TimeOwned
 ```
@@ -176,8 +178,6 @@ The below are some common examples of openCypher Syntax based upon the [iNatural
 		* [Limit results](#Limitresults)
 		* [Join distinct set from two queries](#Joindistinctsetfromtwoqueries)
 		* [Join combined set from two queries](#Joincombinedsetfromtwoqueries)
-* [Operators](#Operators)
-* [Functions](#Functions)
 
 <!-- vscode-markdown-toc-config
 	numbering=false
